@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{asset('public/backend')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('public/backend')}}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="{{asset('public/backend/plugins/toastr/toastr.css')}}">
+
 </head>
 <body >
 
@@ -71,5 +73,63 @@
 <script src="{{asset('public/backend')}}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('public/backend')}}/dist/js/pages/dashboard2.js"></script>
+<script type="text/javascript" src="{{asset('public/backend/plugins/toastr/toastr.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/backend/plugins/sweetalert/sweetalert.min.js')}}"></script>
+
+<script>
+   $(document).ready(function () {
+
+    $("#test").click(function(e){
+        e.prenentDefault();
+        alert('done');
+    })
+
+});
+</script>
+
+</script>
+
+<script>
+    $(document).on("click","#delete",function(e){
+        e.prenentDefault();
+        var link = $(this).attr("href");
+        swal({
+            title:"Are you want to delete?",
+            text:"Once Delete, This will be Permanently Delete!",
+            icon:"warning",
+            dangerMode:true,
+        })
+        .then((willDelete) => {
+            if(willDelete){
+                window.location.href = link;
+            }
+            else{
+                swal("Safe Delete");
+            }
+        });
+    });
+</script>
+
+<script>
+    @if(Session::has('message'))
+        var type="{{Session::get('alert-type','info')}}"
+        switch(type){
+            case 'info':
+                toastr.info("{{Session::get('message')}}");
+                break;
+            case 'success':
+                toastr.success("{{Session::get('message')}}");
+                break;
+            case 'warning':
+                toastr.warning("{{Session::get('message')}}");
+                break; 
+            case 'error':
+                toastr.error("{{Session::get('message')}}");
+                break;   
+        }
+    @endif
+</script>
+
+
 </body>
 </html>
