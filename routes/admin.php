@@ -16,5 +16,19 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
     Route::get('/admin/home','AdminController@admin')->name('admin.home');
     Route::get('/admin/logout','AdminController@logout')->name('admin.logout');
 
+    //Category Routes
+    Route::group(['prefix'=>'category','as'=>'category.'],function(){
+        Route::get('/','CategoryController@index')->name('index');
+        Route::post('/store','CategoryController@store')->name('store');
+        Route::get('/delete/{id}','CategoryController@delete')->name('delete');
+        Route::get('/edit/{id}','CategoryController@edit');
+        Route::post('/update','CategoryController@update')->name('update');
+
+
+
+
+
+    });
+
 
 });

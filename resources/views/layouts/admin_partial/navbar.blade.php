@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a class="dropdown-item" onclick"handleDelete(event);" id="test" href="{{ route('admin.logout') }}"
+        <a class="dropdown-item" onclick"handleDelete(event);" id="delete" href="{{ route('admin.logout') }}"
 >
          {{ __('Logout') }}
       </a>      
