@@ -20,7 +20,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
     Route::group(['prefix'=>'category','as'=>'category.'],function(){
         Route::get('/','CategoryController@index')->name('index');
         Route::post('/store','CategoryController@store')->name('store');
-        Route::get('/delete/{id}','CategoryController@delete')->name('delete');
+        Route::get('/delete/{id}','CategoryController@destroy')->name('delete');
         Route::get('/edit/{id}','CategoryController@edit');
         Route::post('/update','CategoryController@update')->name('update');
 
@@ -45,6 +45,15 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 		Route::get('/delete/{id}','ChildcategoryController@destroy')->name('delete');
 		Route::get('/edit/{id}','ChildcategoryController@edit');
 		Route::post('/update','ChildcategoryController@update')->name('update');
+	});
+
+    //Brand routes
+	Route::group(['prefix'=>'brand','as' =>'brand.'], function(){
+		Route::get('/','BrandController@index')->name('index');
+		Route::post('/store','BrandController@store')->name('store');
+		Route::get('/delete/{id}','BrandController@destroy')->name('delete');
+		Route::get('/edit/{id}','BrandController@edit');
+		Route::post('/update','BrandController@update')->name('update');
 	});
 
 

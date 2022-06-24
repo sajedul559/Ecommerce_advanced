@@ -43,7 +43,7 @@ class CategoryController extends Controller
       return redirect()->back()->with($notification);
     }
    //Delete Category
-   public function delete($id)
+   public function destroy($id)
    {
      $data = Category::findorfail($id)->delete();
 

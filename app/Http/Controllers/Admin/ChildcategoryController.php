@@ -71,13 +71,14 @@ class ChildcategoryController extends Controller
 
     public function update(Request $request)
     {
-        $cat = DB::table('subcategories')->where('id',$request->subcategory_id)->first();
-        $data = array();
-        $data['category_id'] = $cat->category_id;
-        $data['subcategory_id'] = $request->subcategory_id;
-        $data['childcategory_name'] =  $request->childcategory_name;
-        $data['childcategory_slug'] = Str::slug($request->childcategory_name);
-        DB::table('childcategories')->update($data);
+        $cat=DB::table('subcategories')->where('id',$request->subcategory_id)->first();
+
+        $data=array();
+        $data['category_id']=$cat->category_id;
+        $data['subcategory_id']=$request->subcategory_id;
+        $data['childcategory_slug']=Str::slug($request->childcategory_name, '-');
+        $data['childcategory_name']=$request->childcategory_name;
+        DB::table('childcategories')->where('id',$request->id)->update($data);
         $notification = array('message'=>'Childcategory Updated!','alert-type' =>'success');
         return redirect()->back()->with($notification);
 
