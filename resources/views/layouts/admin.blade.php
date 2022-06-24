@@ -14,6 +14,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('public/backend')}}/dist/css/adminlte.min.css">
   <link rel="stylesheet" type="text/css" href="{{asset('public/backend/plugins/toastr/toastr.css')}}">
+  <link rel="stylesheet" href="{{asset('public/backend/plugins/summernote/summernote-bs4.css')}}">
+
+  <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
 
 </head>
 <body >
@@ -135,6 +141,15 @@
 <script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="{{asset('public/backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
+
+<script>
+   $(function(){
+    $('.textarea').summernote()
+   })
+</script>
 <script>
     $(function () {
       $("#example1").DataTable({
