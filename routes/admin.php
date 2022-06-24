@@ -15,6 +15,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 
     Route::get('/admin/home','AdminController@admin')->name('admin.home');
     Route::get('/admin/logout','AdminController@logout')->name('admin.logout');
+    Route::get('/admin/password/change','AdminController@PasswordChange')->name('admin.password.change');
+    Route::post('/admin/password/update','AdminController@PasswordUpdate')->name('admin.password.update');
 
     //Category Routes
     Route::group(['prefix'=>'category','as'=>'category.'],function(){
@@ -56,5 +58,13 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 		Route::post('/update','BrandController@update')->name('update');
 	});
 
+    	//setting Routes
+	Route::group(['prefix'=>'setting'], function(){
+		//seo setting
+		Route::group(['prefix'=>'seo'], function(){
+			Route::get('/','SettingController@seo')->name('seo.setting');
+			Route::post('/update/{id}','SettingController@seoUpdate')->name('seo.setting.update');
+	    });
 
+    });
 });
