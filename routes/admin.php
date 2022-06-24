@@ -39,7 +39,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 	Route::get('/get-child-category/{id}','CategoryController@GetChildCategory');
 
 	//subcategory routes
-	Route::group(['prefix'=>'subcategory','as' =>'subcategory'], function(){
+	Route::group(['prefix'=>'childcategory','as' =>'childcategory.'], function(){
 		Route::get('/','ChildcategoryController@index')->name('index');
 		Route::post('/store','ChildcategoryController@store')->name('store');
 		Route::get('/delete/{id}','ChildcategoryController@destroy')->name('delete');
