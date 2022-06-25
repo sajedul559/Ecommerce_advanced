@@ -39,7 +39,7 @@ class ProductController extends Controller
                  if ($request->brand_id) {
                      $query->where('products.brand_id',$request->brand_id);
                  }
- 
+  
                  if ($request->warehouse) {
                      $query->where('products.warehouse',$request->warehouse);
                  }
