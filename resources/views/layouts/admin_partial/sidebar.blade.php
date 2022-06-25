@@ -128,6 +128,31 @@
             </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+                Offers
+                <i class="fas fa-angle-left right"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('coupon.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Cupon</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('website.setting')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>E Campaign</p>
+                </a>
+            </li>
+           
+            </ul>
+        </li>
+      
       
         
         <li class="nav-header">PROFILE</li>
