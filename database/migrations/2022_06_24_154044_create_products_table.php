@@ -19,10 +19,13 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('subcategory_id');
             $table->integer('childcategory_id')->nullable();
             $table->integer('brand_id')->nullable();
+            $table->integer('pickup_point_id')->nullable();
             $table->string('name');
             $table->string('code');
             $table->string('unit')->nullable();
             $table->string('tags')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->string('video')->nullable();
             $table->string('purchase_price')->nullable();
             $table->string('selling_price')->nullable();

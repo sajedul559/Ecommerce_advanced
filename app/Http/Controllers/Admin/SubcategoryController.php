@@ -80,24 +80,20 @@ class SubcategoryController extends Controller
 
    public function update(Request $request)
    {
-      $data = array();
-       $data['category_id'] = $request->category_id;
-       $date['subcategory_name'] = $request->subcategory_name;
-       $data['subcat_slug'] = Str::slug($request->subcategory_name);
-       DB::table('subcategories')->update($date);
-       $notification = array('message' =>'Subcategory update!', 'alert-type'=>'success');
-       return redirect()->back()->with($notification);
-   }
-   public function destroy($id)
-   {
-     $data = Subcategory::findorfail($id)->delete();
+      //Eloquent ORM
+      $subcategory=Subcategory::where('id',$request->id)->first();
+      $subcategory->update([
+              'category_id'=> $request->category_id,
+           'subcategory_name'=> $request->subcategory_name,
+           'subcat_slug'=> Str::slug($request->subcategory_name, '-')
+      ]);
 
-     $notification = array('message' => 'Subcategory Deleted!','alert-type' => 'success');
-     return redirect()->back()->with($notification);
+      $notification = array('message'=>'Subcategory Updated!','alert-type'=>'success');
+
+      return redirect()->back()->with($notification);
+    
    }
-    
-    
-    
+
 
 
 }

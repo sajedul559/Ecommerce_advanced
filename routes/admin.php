@@ -28,6 +28,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 
     });
 
+	
      // Sub Category Routes
      Route::group(['prefix'=>'subcategory','as'=>'subcategory.'],function(){
         Route::get('/','SubcategoryController@index')->name('index');
@@ -64,6 +65,22 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 		Route::get('/delete/{id}','BrandController@destroy')->name('delete');
 		Route::get('/edit/{id}','BrandController@edit');
 		Route::post('/update','BrandController@update')->name('update');
+	});
+
+	//product routes
+	Route::group(['prefix'=>'product'], function(){
+		Route::get('/','ProductController@index')->name('product.index');
+		Route::get('/create','ProductController@create')->name('product.create');
+		Route::post('/store','ProductController@store')->name('product.store');
+		Route::get('/delete/{id}','ProductController@destroy')->name('product.delete');
+		Route::get('/edit/{id}','ProductController@edit')->name('product.edit');
+		Route::post('/update','ProductController@update')->name('product.update');
+		Route::get('/active-featured/{id}','ProductController@activefeatured');
+		Route::get('/not-featured/{id}','ProductController@notfeatured');
+		Route::get('/active-deal/{id}','ProductController@activedeal');
+		Route::get('/not-deal/{id}','ProductController@notdeal');
+		Route::get('/active-status/{id}','ProductController@activestatus');
+		Route::get('/not-status/{id}','ProductController@notstatus');
 	});
 	//Coupon Routes
 	Route::group(['prefix'=>'coupon'], function(){
