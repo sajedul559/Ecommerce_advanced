@@ -22,3 +22,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.home')->middleware('is_admin');
 
+Route::get('/ffff', function () {
+    return view('frontend.product_details');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
+
+    //Frontend all route here
+    Route::get('/','IndexController@index');
+
+
+});

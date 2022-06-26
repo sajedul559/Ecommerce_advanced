@@ -1,6 +1,11 @@
 @extends('layouts.app')
+	@section('navbar')
+	@include('layouts.front_partial.main_nav')
+
+	@endsection
 
 @section('content')
+
 
 	<!-- Banner -->
 
