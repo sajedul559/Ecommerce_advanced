@@ -10,22 +10,26 @@
 	<!-- Banner -->
 
 	<div class="banner">
-		<div class="banner_background" style="background-image:url({{asset('public/frontend')}}/images/banner_background.jpg)"></div>
-		<div class="container fill_height">
-			<div class="row fill_height">
-				<div class="banner_product_image"><img src=" {{asset('public/frontend')}}/images/banner_product.png" alt=""></div>
-				<div class="col-lg-5 offset-lg-4 fill_height">
-					<div class="banner_content">
-						<h1 class="banner_text">new era of smartphones</h1>
-						<div class="banner_price"><span>$530</span>$460</div>
-						<div class="banner_product_name">Apple Iphone 6s</div>
-						<div class="button banner_button"><a href="#">Shop Now</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="banner_background" style="background-image:url({{ asset('public/frontend') }}/images/banner_background.jpg)"></div>
+        <div class="container fill_height">
+            <div class="row fill_height">
+                <div class="banner_product_image"><img src="{{ asset('public/files/product/'.$bannerproduct->thumbnail) }}" alt="{{ $bannerproduct->name }}"></div>
+                <div class="col-lg-5 offset-lg-4 fill_height">
+                    <div class="banner_content">
+                        <h1 class="banner_text">{{ $bannerproduct->name }}</h1>
+                        @if($bannerproduct->discount_price==NULL)
+                         <div class="banner_price">{{ $setting->currency }}{{ $bannerproduct->selling_price }}</div>
+                        @else
+                          <div class="banner_price"><span>{{ $setting->currency }}{{ $bannerproduct->selling_price }}</span>{{ $setting->currency }}{{ $bannerproduct->discount_price }}</div>
+                        @endif
+                        <div class="banner_product_name">{{ $bannerproduct->brand->brand_name }}</div>
+                        <div class="button banner_button"><a href="{{ route('product.details',$bannerproduct->slug) }}">Shop Now</a></div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- Characteristics -->
 
 	<div class="characteristics">

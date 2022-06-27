@@ -20,7 +20,10 @@
 										 $subcategory = DB::table('subcategories')->where('category_id',$row->id)->get();
 									   @endphp
 										<li class="hassubs">
-											<a href="#">{{$row->category_name}}<i class="fas fa-chevron-right"></i></a>
+											<a href="#">{{$row->category_name}}@if ($subcategory)
+												<i class="fas fa-chevron-right"></i>
+												
+											@endif</a>
 											<ul>
 												@foreach ($subcategory as $row )
 												@php
@@ -40,7 +43,6 @@
 												@endforeach
 												
 												
-												<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 											</ul>
 										</li>
 									@endforeach

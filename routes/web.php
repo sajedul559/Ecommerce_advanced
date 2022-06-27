@@ -18,9 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/login',function(){
+    return redirect()->to('/');
+})->name('login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.home')->middleware('is_admin');
+Route::get('/customer/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('customer.logout');
 
 Route::get('/ffff', function () {
     return view('frontend.product_details');
@@ -30,6 +33,15 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
 
     //Frontend all route here
     Route::get('/','IndexController@index');
+    Route::get('/product-details/{slug}','IndexController@ProductDetails')->name('product.details');
 
+    //review for product
+    Route::post('/store/review','ReviewController@store')->name('store.review');
+
+    //categorywise product
+    Route::get('/category/product/{id}','IndexController@categoryWiseProduct')->name('categorywise.product');
+    Route::get('/subcategory/product/{id}','IndexController@SubcategoryWiseProduct')->name('subcategorywise.product');
+    Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
+    Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
 });
