@@ -44,4 +44,12 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
     Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
+
+    //wishlist
+    Route::get('/wishlist','CartController@wishlist')->name('wishlist');
+    Route::get('/clear/wishlist','CartController@Clearwishlist')->name('clear.wishlist');
+    Route::get('/add/wishlist/{id}','CartController@AddWishlist')->name('add.wishlist');
+    Route::get('/wishlist/product/delete/{id}','CartController@WishlistProductdelete')->name('wishlistproduct.delete');
+    
+
 });

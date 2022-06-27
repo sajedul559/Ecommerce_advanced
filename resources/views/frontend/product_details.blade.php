@@ -6,6 +6,36 @@
 
 	
   @include('layouts.front_partial.collaps_nav')
+  <style type="text/css">
+	.checked {
+  color: orange;
+}
+</style>
+
+  @php
+ $review_5=App\Models\Review::where('product_id',$product->id)->where('rating',5)->count();
+ $review_4=App\Models\Review::where('product_id',$product->id)->where('rating',4)->count();
+ $review_3=App\Models\Review::where('product_id',$product->id)->where('rating',3)->count();
+ $review_2=App\Models\Review::where('product_id',$product->id)->where('rating',2)->count();
+ $review_1=App\Models\Review::where('product_id',$product->id)->where('rating',1)->count();
+
+ $sum_rating=App\Models\Review::where('product_id',$product->id)->sum('rating');
+ $count_rating=App\Models\Review::where('product_id',$product->id)->count('rating');
+
+ //Share plugin 
+			 // Share button 1
+        //  $shareButtons1 = \Share::page(
+        //       url()->current()
+        //  )
+        //  ->facebook()
+        //  ->twitter()
+        //  ->linkedin()
+        //  ->telegram()
+        //  ->whatsapp() 
+        //  ->reddit();
+
+
+@endphp
 
   
   <div class="single_product">
@@ -49,7 +79,7 @@
 					<div class="product_category"><b> Stock: {{ $product->stock_quantity }} </b></div>
 					<div class="product_category"><b> Unit: {{ $product->unit }} </b></div>
 					 {{-- review star --}}
-					 {{-- <div>
+					 <div>
 							@if($sum_rating !=NULL)	
 								@if(intval($sum_rating/$count_rating) == 5)
 								<span class="fa fa-star checked"></span>
@@ -83,7 +113,7 @@
 								<span class="fa fa-star "></span>
 								@endif
 							@endif 	
-					 </div> --}}
+					 </div>
 					<div><br>
 						 
 								@if($product->discount_price==NULL)
@@ -155,7 +185,7 @@
 								    <button class="btn btn-outline-info" type="submit"> <span class="loading d-none">....</span> Add to cart</button>
 								    @endif
 
-								    <a href="#" class="btn btn-outline-primary" type="button">Add to wishlist</a>
+								    <a href="{{route('add.wishlist',$product->id)}}" class="btn btn-outline-primary" type="button">Add to wishlist</a>
 								  </div>
 								</div>
 							</div>
@@ -210,8 +240,8 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-lg-3">
-						Average Review of  {{ $product->name }}: product testion<br>
-					{{-- @if($sum_rating !=NULL)
+						Average Review of  {{ $product->name }}:<br>
+					@if($sum_rating !=NULL)
 						@if(intval($sum_rating/$count_rating) == 5)
 						<span class="fa fa-star checked"></span>
 						<span class="fa fa-star checked"></span>
@@ -243,7 +273,7 @@
 						<span class="fa fa-star "></span>
 						<span class="fa fa-star "></span>
 						@endif
-					@endif	 --}}
+					@endif	
 					</div>
 					<div class="col-md-3">
 						{{-- all review show --}}
@@ -254,7 +284,7 @@
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
-										{{-- <span> Total {{ $review_5 }} </span> --}}
+										<span> Total {{ $review_5 }} </span>
 									</div>
 
 									<div>
@@ -263,7 +293,7 @@
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star "></span>
-										{{-- <span> Total {{ $review_4 }} </span> --}}
+										<span> Total {{ $review_4 }} </span>
 									</div>
 
 									<div>
@@ -272,7 +302,7 @@
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star "></span>
 										<span class="fa fa-star "></span>
-										{{-- <span> Total {{ $review_3 }} </span> --}}
+										<span> Total {{ $review_3 }} </span>
 									</div>
 
 									<div>
@@ -281,7 +311,7 @@
 										<span class="fa fa-star "></span>
 										<span class="fa fa-star "></span>
 										<span class="fa fa-star "></span>
-										{{-- <span> Total {{ $review_2 }} </span> --}}
+										<span> Total {{ $review_2 }} </span>
 									</div>
 
 									<div>
@@ -290,7 +320,7 @@
 										<span class="fa fa-star "></span>
 										<span class="fa fa-star "></span>
 										<span class="fa fa-star "></span>
-										{{-- <span> Total {{ $review_1 }} </span> --}}
+										<span> Total {{ $review_1 }} </span>
 									</div>
 									
 								
@@ -316,7 +346,7 @@
 							 
 						  </div>
 						  @if(Auth::check())
-						  <button type="submit" class="btn btn-sm btn-info"><span class="fa fa-star "></span> submit review</button>
+						  <button type="submit" class="btn btn-sm btn-info"><span class="fa fa-star  "></span> submit review</button>
 						  @else
 						   <p>Please at first login to your account for submit a review.</p>
 						  @endif

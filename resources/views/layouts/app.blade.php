@@ -22,6 +22,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend') }}/plugins/slick-1.8.0/slick.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend') }}/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend') }}/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/backend/plugins/toastr/toastr.css') }}">
+
 
 
 
@@ -149,6 +151,9 @@
 							</div>
 						</div>
 					</div>
+					@php
+						$wishlists = DB::table('wishlists')->where('user_id',Auth::id())->count();
+					@endphp
 
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
@@ -157,7 +162,7 @@
 								<div class="wishlist_icon"><img src="{{ asset('public/frontend') }}/images/heart.png" alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
+									<div class="wishlist_count">{{$wishlists}}</div>
 								</div>
 							</div>
 
@@ -306,6 +311,28 @@
 <script src="{{ asset('public/frontend') }}/js/custom.js"></script>
 {{-- <script src="{{ asset('public/frontend') }}/js/product_custom.js"></script> --}}
 <script src="{{asset('public/frontend/product/product_custome.js')}}"></script>
+<script type="text/javascript" src="{{ asset('public/backend/plugins/toastr/toastr.min.js') }}"></script>
+
+
+<script>
+    @if(Session::has('message'))
+        var type="{{Session::get('alert-type','info')}}"
+        switch(type){
+            case 'info':
+                toastr.info("{{Session::get('message')}}");
+                break;
+            case 'success':
+                toastr.success("{{Session::get('message')}}");
+                break;
+            case 'warning':
+                toastr.warning("{{Session::get('message')}}");
+                break; 
+            case 'error':
+                toastr.error("{{Session::get('message')}}");
+                break;   
+        }
+    @endif
+</script>
 
 
 </body>
