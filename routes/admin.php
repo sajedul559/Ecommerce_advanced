@@ -99,6 +99,23 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware' =>'is_admin
 		Route::get('/edit/{id}','PickupController@edit');
 		Route::post('/update','PickupController@update')->name('update.pickup.point');
 	});
+	//Campaign Routes
+	Route::group(['prefix'=>'campaign'], function(){
+		Route::get('/','CampaignController@index')->name('campaign.index');
+		Route::post('/store','CampaignController@store')->name('campaign.store');
+		Route::get('/delete/{id}','CampaignController@destroy')->name('campaign.delete');
+		Route::get('/edit/{id}','CampaignController@edit');
+		Route::post('/update','CampaignController@update')->name('campaign.update');
+	});
+	//__campaign product routes__//
+	Route::group(['prefix'=>'campaign-product'], function(){
+		Route::get('/{campaign_id}','CampaignController@campaignProduct')->name('campaign.product');
+		Route::get('/add/{id}/{campaign_id}','CampaignController@ProductAddToCampaign')->name('add.product.to.campaign');
+		Route::get('/list/{campaign_id}','CampaignController@ProductListCampaign')->name('campaign.product.list');
+		Route::get('/remove/{id}','CampaignController@RemoveProduct')->name('product.remove.campaign');
+		// Route::post('/update','CampaignController@update')->name('campaign.update');
+	});
+
 
 
     	//setting Routes
