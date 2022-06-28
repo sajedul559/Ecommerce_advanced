@@ -46,6 +46,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
     Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
+     //cart
+     Route::get('/all-cart','CartController@AllCart')->name('all.cart'); //ajax request for subtotal
+
+     Route::post('/addtocart','CartController@AddToCartQV')->name('add.to.cart.quickview');
+     Route::get('/cartproduct/remove/{rowId}','CartController@RemoveProduct');
+     Route::get('/cartproduct/updateqty/{rowId}/{qty}','CartController@UpdateQty');
+     Route::get('/cartproduct/updatecolor/{rowId}/{color}','CartController@UpdateColor');
+     Route::get('/cartproduct/updatesize/{rowId}/{size}','CartController@UpdateSize');
 
     //wishlist
     Route::get('/wishlist','CartController@wishlist')->name('wishlist');

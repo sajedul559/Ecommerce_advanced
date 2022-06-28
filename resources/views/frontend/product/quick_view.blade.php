@@ -55,7 +55,7 @@
     
                       <br>
                      <div class="order_info d-flex flex-row">
-                        <form action="#" method="post" id="add_cart_form">
+                        <form action="{{ route('add.to.cart.quickview') }}" method="post" id="add_cart_form">
                           @csrf
                           {{-- cart add details --}}
                           <input type="hidden" name="id" value="{{$product->id}}">
