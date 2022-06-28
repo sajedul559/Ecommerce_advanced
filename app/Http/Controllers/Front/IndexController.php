@@ -22,12 +22,12 @@ class IndexController extends Controller
         $random_product=Product::where('status',1)->inRandomOrder()->limit(16)->get();
        // $review=DB::table('wbreviews')->where('status',1)->orderBy('id','DESC')->limit(12)->get();
         //homepage category
-      //  $home_category=DB::table('categories')->where('home_page',1)->orderBy('category_name','ASC')->get();
+       $home_category=DB::table('categories')->where('home_page',1)->orderBy('category_name','ASC')->get();
 
 
        // $campaign=DB::table('campaigns')->where('status',1)->orderBy('id','DESC')->first();
 
-        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal'));
+        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal','home_category'));
     }
 
     
@@ -43,4 +43,12 @@ class IndexController extends Controller
 
         return view('frontend.product_details',compact('product','related_product','review'));
     }
+
+      //product quick view
+      public function ProductQuickView($id)
+      {
+          $product=Product::where('id',$id)->first();
+          return view('frontend.product.quick_view',compact('product'));
+      }
+  
 }
