@@ -54,7 +54,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
      Route::post('/apply/coupon','CheckoutController@ApplyCoupon')->name('apply.coupon');
      Route::get('/remove/coupon','CheckoutController@RemoveCoupon')->name('coupon.remove');
      Route::post('/order/place','CheckoutController@OrderPlace')->name('order.place');
-     
+
      Route::post('/addtocart','CartController@AddToCartQV')->name('add.to.cart.quickview');
      Route::get('/cartproduct/remove/{rowId}','CartController@RemoveProduct');
      Route::get('/cartproduct/updateqty/{rowId}/{qty}','CartController@UpdateQty');
@@ -66,6 +66,10 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/clear/wishlist','CartController@Clearwishlist')->name('clear.wishlist');
     Route::get('/add/wishlist/{id}','CartController@AddWishlist')->name('add.wishlist');
     Route::get('/wishlist/product/delete/{id}','CartController@WishlistProductdelete')->name('wishlistproduct.delete');
-    
+    //categorywise product
+    Route::get('/category/product/{id}','IndexController@categoryWiseProduct')->name('categorywise.product');
+    Route::get('/subcategory/product/{id}','IndexController@SubcategoryWiseProduct')->name('subcategorywise.product');
+    Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
+    Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
 });

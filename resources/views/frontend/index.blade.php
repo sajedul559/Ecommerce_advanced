@@ -86,7 +86,35 @@
 			</div>
 		</div>
 	</div>
+<!-- Brands -->
 
+	<div class="brands">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="brands_slider_container">
+						
+						<!-- Brands Slider -->
+
+						<div class="owl-carousel owl-theme brands_slider">
+						@foreach($brand as $row) 
+							<div class="owl-item">
+								<div class="brands_item d-flex flex-column justify-content-center">
+								<a href="{{ route('brandwise.product',$row->id) }}" title="{{ $row->brand_name }}"> <img src="{{ asset($row->brand_logo) }}" alt="{{ $row->brand_name }}" height="50" width="40"> </a>
+								</div>
+							</div>
+						@endforeach     
+						</div>
+						
+						<!-- Brands Slider Navigation -->
+						<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
+						<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Deals of the week -->
 
 	<div class="deals_featured">
@@ -400,6 +428,8 @@
 			</div>
 		</div>
 	</div>
+
+	
 
 	<!-- Hot New Arrivals -->
 

@@ -132,18 +132,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 
-		 $('body').on('click','#removeProduct', function(){
-		    let id=$(this).data('id');
-		    $.ajax({
-		      url:'{{ url('cartproduct/remove/') }}/'+id,
-		      type:'get',
-		      async:false,
-		      success:function(data){
-		        toastr.success(data);
-		        location.reload();
-		      }
-		    });
-		  });
+       $('body').on('click','#removeProduct',function(){
+        let id = $(this).data('id');
+        $.ajax({
+            url:'{{ url('cartproduct/remove/') }}/'+id,
+            type:'get',
+            async:false,
+            success:function(data){
+                toastr.success(data)
+                location.reload();
+            }
+
+        });
+       });
+		//  $('body').on('click','#removeProduct', function(){
+		//     let id=$(this).data('id');
+		//     $.ajax({
+		//       url:'{{ url('cartproduct/remove/') }}/'+id,
+		//       type:'get',
+		//       async:false,
+		//       success:function(data){
+		//         toastr.success(data);
+		//         location.reload();
+		//       }
+		//     });
+		//   });
 
 		 //qty update with ajax
 		 $('body').on('blur','.qty', function(){
