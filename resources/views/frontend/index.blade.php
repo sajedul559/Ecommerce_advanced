@@ -5,7 +5,11 @@
 	@endsection
 
 @section('content')
-
+<style type="text/css">
+    .checked {
+  color: orange;
+}
+</style>
 
 	<!-- Banner -->
 
@@ -435,70 +439,70 @@
 
 <!-- Home Category wise product-->
 
-@foreach($home_category as $row)
-@php 
-  $cat_product=DB::table('products')->where('category_id',$row->id)->orderBy('id','DESC')->limit(24)->get();
-@endphp
- <div class="new_arrivals">
-	 <div class="container">
-		 <div class="row">
-			 <div class="col">
-				 <div class="tabbed_container">
-					 <div class="tabs clearfix tabs-right">
-						 <div class="new_arrivals_title">{{ $row->category_name }}</div>
-						 <ul class="clearfix">
-							 <li class=""><a href=""> view more </a></li>
-						 </ul>
-						 <div class="tabs_line"><span></span></div>
-					 </div>
-					 <div class="row">
-						 <div class="col-lg-12" style="z-index:1;">
-							 <!-- Product Panel -->
-							 <div class="product_panel panel active">
-								 <div class="arrivals_slider slider">
+	@foreach($home_category as $row)
+	@php 
+	$cat_product=DB::table('products')->where('category_id',$row->id)->orderBy('id','DESC')->limit(24)->get();
+	@endphp
+	<div class="new_arrivals">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="tabbed_container">
+						<div class="tabs clearfix tabs-right">
+							<div class="new_arrivals_title">{{ $row->category_name }}</div>
+							<ul class="clearfix">
+								<li class=""><a href=""> view more </a></li>
+							</ul>
+							<div class="tabs_line"><span></span></div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12" style="z-index:1;">
+								<!-- Product Panel -->
+								<div class="product_panel panel active">
+									<div class="arrivals_slider slider">
 
-									@foreach($cat_product as $row) 
-									 <!-- Slider Item -->
-									 <div class="arrivals_slider_item">
-										 <div class="border_active"></div>
-										 <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-											 <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('public/files/product/'.$row->thumbnail) }}" alt="{{ $row->name }}" height="100%" width="55%"></div>
-											 <div class="product_content">
-												 @if($row->discount_price==NULL)
-												   <div class="product_price discount">{{ $setting->currency }}{{ $row->selling_price }}</div>
-												 @else
-												   <div class="product_price discount">{{ $setting->currency }} {{ $row->discount_price }}<span>{{ $setting->currency }} {{ $row->selling_price }}</span></div>
-												 @endif
-												 
-												 <div class="product_name"><div><a href="{{ route('product.details',$row->slug) }}">{{ $row->name }}</a></div></div>
-												 <div class="product_extras">
-													 <div class="product_color">
-														 <a href="" class="quick_view" id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">quick view</a>
-													 </div>
-													 <button class="product_cart_button quick_view"  id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">Add to Cart</button>
-												 </div>
-											 </div>
-											 <a href="{{ route('add.wishlist',$row->id) }}">
-												<div class="product_fav">
-												   <i class="fas fa-heart"></i>
+										@foreach($cat_product as $row) 
+										<!-- Slider Item -->
+										<div class="arrivals_slider_item">
+											<div class="border_active"></div>
+											<div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+												<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('public/files/product/'.$row->thumbnail) }}" alt="{{ $row->name }}" height="100%" width="55%"></div>
+												<div class="product_content">
+													@if($row->discount_price==NULL)
+													<div class="product_price discount">{{ $setting->currency }}{{ $row->selling_price }}</div>
+													@else
+													<div class="product_price discount">{{ $setting->currency }} {{ $row->discount_price }}<span>{{ $setting->currency }} {{ $row->selling_price }}</span></div>
+													@endif
+													
+													<div class="product_name"><div><a href="{{ route('product.details',$row->slug) }}">{{ $row->name }}</a></div></div>
+													<div class="product_extras">
+														<div class="product_color">
+															<a href="" class="quick_view" id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">quick view</a>
+														</div>
+														<button class="product_cart_button quick_view"  id="{{ $row->id }}" data-toggle="modal" data-target="#exampleModalCenter">Add to Cart</button>
+													</div>
 												</div>
-											 </a>
-					  
-										 </div>
-									 </div>
-									@endforeach 
-			  
-								 </div>
-								 <div class="arrivals_slider_dots_cover"></div>
-							 </div>
-					 </div>
-					</div>       
-				 </div>
-			 </div>
-		 </div>
-	 </div>      
- </div>
-@endforeach 
+												<a href="{{ route('add.wishlist',$row->id) }}">
+													<div class="product_fav">
+													<i class="fas fa-heart"></i>
+													</div>
+												</a>
+						
+											</div>
+										</div>
+										@endforeach 
+				
+									</div>
+									<div class="arrivals_slider_dots_cover"></div>
+								</div>
+						</div>
+						</div>       
+					</div>
+				</div>
+			</div>
+		</div>      
+	</div>
+	@endforeach 
 
 	<!-- Best Sellers -->
 
@@ -1315,117 +1319,75 @@
 	<!-- Reviews -->
 
 	<div class="reviews">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="reviews_title_container">
-						<h3 class="reviews_title">Latest Reviews</h3>
-						<div class="reviews_all ml-auto"><a href="#">view all <span>reviews</span></a></div>
-					</div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    
+                    <div class="reviews_title_container">
+                        <h3 class="reviews_title">Latest Reviews</h3>
+                        <div class="reviews_all ml-auto"><a href="#">view all <span>reviews</span></a></div>
+                    </div>
 
-					<div class="reviews_slider_container">
-						
-						<!-- Reviews Slider -->
-						<div class="owl-carousel owl-theme reviews_slider">
-							
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_1.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Roberto Sanchez</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_2.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Brandon Flowers</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_3.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Emilia Clarke</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_1.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Roberto Sanchez</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_2.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Brandon Flowers</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Reviews Slider Item -->
-							<div class="owl-item">
-								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="{{asset('public/frontend')}}/images/review_3.jpg" alt=""></div></div>
-									<div class="review_content">
-										<div class="review_name">Emilia Clarke</div>
-										<div class="review_rating_container">
-											<div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<div class="review_time">2 day ago</div>
-										</div>
-										<div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="reviews_dots"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="reviews_slider_container">
+                        
+                        <!-- Reviews Slider -->
+                        <div class="owl-carousel owl-theme reviews_slider">
+                            @foreach($review as $row)
+                            <!-- Reviews Slider Item -->
+                            <div class="owl-item">
+                                <div class="review d-flex flex-row align-items-start justify-content-start">
+                                    <div><div class="review_image"><img src="{{ asset('public/files/dummy.jpg') }}" alt=""></div></div>
+                                    <div class="review_content">
+                                        <div class="review_name">{{ $row->name }}</div>
+                                        <div class="review_rating_container">
+                                            <div class="rating_r rating_r_4 review_rating">
+                                                    @if($row->rating == 5)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    @elseif($row->rating == 4)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star "></span>
+                                                    @elseif($row->rating == 3)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    @elseif($row->rating == 2)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    @else
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    <span class="fa fa-star "></span>
+                                                    @endif
+                                                
+                                            </div>
+                                            <div class="review_time">{{ $row->review_date }}</div>
+                                        </div>
+                                        <div class="review_text"><p style="text-align: justify;">{{ substr($row->review,0,110) }}..</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="reviews_dots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- Recently Viewed -->
 
@@ -1573,45 +1535,47 @@
         </div>
     </div>
 
-	<!-- Newsletter -->
+	  <!-- Newsletter -->
 
-	<div class="newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
-						<div class="newsletter_title_container">
-							<div class="newsletter_icon"><img src="{{asset('public/frontend')}}/images/send.png" alt=""></div>
-							<div class="newsletter_title">Sign up for Newsletter</div>
-							<div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
-						</div>
-						<div class="newsletter_content clearfix">
-							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-								<button class="newsletter_button">Subscribe</button>
-							</form>
-							<div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
-						</div>
-					</div>
-				</div>
+	  <div class="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
+                        <div class="newsletter_title_container">
+                            <div class="newsletter_icon"><img src="{{ asset('public/frontend') }}/images/send.png" alt=""></div>
+                            <div class="newsletter_title">Sign up for Newsletter</div>
+                            <div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
+                        </div>
+                        <div class="newsletter_content clearfix">
+                            <form action="{{ route('store.newsletter') }}" method="post" class="newsletter_form" id="newsletter_form">
+                                @csrf
+                                <input type="email" name="email" class="newsletter_input" required="required" placeholder="Enter your email address">
+                                <button class="newsletter_button" type="submit">Subscribe</button>
+                            </form>
+                            <div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog  modal-lg  modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body" id="quick_view_body">
+				
 			</div>
 		</div>
-	</div>
-    
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog  modal-lg  modal-dialog-centered" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
 		</div>
-		<div class="modal-body" id="quick_view_body">
-			
-		</div>
-	  </div>
-	</div>
   </div>
   
 

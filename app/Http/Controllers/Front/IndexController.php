@@ -20,14 +20,14 @@ class IndexController extends Controller
         $popular_product=Product::where('status',1)->orderBy('product_views','DESC')->limit(16)->get();
         $trendy_product=Product::where('status',1)->where('trendy',1)->orderBy('id','DESC')->limit(8)->get();
         $random_product=Product::where('status',1)->inRandomOrder()->limit(16)->get();
-       // $review=DB::table('wbreviews')->where('status',1)->orderBy('id','DESC')->limit(12)->get();
+        $review=DB::table('wbreviews')->where('status',1)->orderBy('id','DESC')->limit(12)->get();
         //homepage category
        $home_category=DB::table('categories')->where('home_page',1)->orderBy('category_name','ASC')->get();
 
 
        // $campaign=DB::table('campaigns')->where('status',1)->orderBy('id','DESC')->first();
 
-        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal','home_category'));
+        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal','home_category','review'));
     }
 
     
@@ -95,6 +95,23 @@ class IndexController extends Controller
          $random_product=Product::where('status',1)->inRandomOrder()->limit(16)->get();
          return view('frontend.product.brandwise_product',compact('categories','brands','products','random_product','brand'));
      }
+      //store newsletter
+    public function storeNewsletter(Request $request)
+    {
+        $email=$request->email;
+        $check=DB::table('newsletters')->where('email',$email)->first();
+        if ($check) {
+            return response()->json('Email Already Exist!');
+        }else{
+              $data=array();
+              $data['email']=$request->email;
+              DB::table('newsletters')->insert($data);
+              return response()->json('Thanks for subscribe us!');  
+        }
+       
+
+    }
+
  
   
 }

@@ -72,4 +72,27 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
     Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
+     //setting profile
+     Route::get('/home/setting','ProfileController@setting')->name('customer.setting'); 
+     Route::post('/home/password/update','ProfileController@PasswordChange')->name('customer.password.change'); 
+ 
+     Route::get('/my/order','ProfileController@MyOrder')->name('my.order'); 
+     Route::get('/view/order/{id}','ProfileController@ViewOrder')->name('view.order'); 
+    //newsletter
+    Route::post('/store/newsletter','IndexController@storeNewsletter')->name('store.newsletter');
+
+
+
+     //review for product
+     Route::post('/store/review','ReviewController@store')->name('store.review');
+     //this review for website not product
+     Route::get('/write/review','ReviewController@write')->name('write.review');
+     Route::post('/store/website/review','ReviewController@StoreWebsiteReview')->name('store.website.review');
+      //support ticket
+    Route::get('/open/ticket','ProfileController@ticket')->name('open.ticket');
+    Route::get('/new/ticket','ProfileController@NewTicket')->name('new.ticket');
+    Route::post('/store/ticket','ProfileController@StoreTicket')->name('store.ticket');
+    Route::get('/show/ticket/{id}','ProfileController@ticketShow')->name('show.ticket');
+    Route::post('/reply/ticket','ProfileController@ReplyTicket')->name('reply.ticket'); 
+
 });
