@@ -8,6 +8,8 @@ use Auth;
 use Cart;
 use DB;
 use Session;
+use Mail;
+use App\Mail\InvoiceMail;
 
 use App\Models\Shipping;
 
@@ -99,7 +101,7 @@ class CheckoutController extends Controller
             
            
 
-            //Mail::to($request->c_email)->send(new InvoiceMail($order));
+            Mail::to($request->c_email)->send(new InvoiceMail($order));
 
             //order details
             $content=Cart::content();

@@ -20,7 +20,7 @@
                              <div class="card" >
                                <div class="card-body">
                                  <h5 class="card-title text-success text-center">Total Order</h5>
-                                 {{-- <h6 class="card-subtitle mb-2 text-muted text-center">{{ $total_order }}</h6> --}}
+                                 <h6 class="card-subtitle mb-2 text-muted text-center">{{ $total_order }}</h6>
                                </div>
                              </div>
                            </a>
@@ -30,7 +30,7 @@
                              <div class="card" >
                                <div class="card-body">
                                  <h5 class="card-title text-success text-center">Complete Order</h5>
-                                 {{-- <h6 class="card-subtitle mb-2 text-muted text-center">{{ $complete_order }}</h6> --}}
+                                 <h6 class="card-subtitle mb-2 text-muted text-center">{{ $complete_order }}</h6>
                                </div>
                              </div>
                            </a>
@@ -40,7 +40,7 @@
                              <div class="card" >
                                <div class="card-body">
                                  <h5 class="card-title text-danger text-center">Cancel Order</h5>
-                                 {{-- <h6 class="card-subtitle mb-2 text-muted text-center">{{ $cancel_order }}</h6> --}}
+                                 <h6 class="card-subtitle mb-2 text-muted text-center">{{ $cancel_order }}</h6>
                                </div>
                              </div>
                            </a>
@@ -50,7 +50,7 @@
                             <div class="card" >
                               <div class="card-body">
                                 <h5 class="card-title text-warning text-center">Return Order</h5>
-                                {{-- <h6 class="card-subtitle mb-2 text-muted text-center">{{ $return_order }}</h6> --}}
+                                <h6 class="card-subtitle mb-2 text-muted text-center">{{ $return_order }}</h6>
                               </div>
                             </div>
                           </a>
