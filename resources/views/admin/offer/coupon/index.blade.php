@@ -76,7 +76,7 @@
 </div>
 
 
-{{-- category insert modal --}}
+{{-- coupon insert modal --}}
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -102,7 +102,7 @@
           </div>
           <div class="form-group">
             <label for="coupon_amount">Amount </label>
-            <input type="text" class="form-control"  name="coupon_amount" required="">
+            <input type="number" class="form-control"  name="coupon_amount" required="">
           </div>
           <div class="form-group">
             <label for="valid_date">Valid Date</label>

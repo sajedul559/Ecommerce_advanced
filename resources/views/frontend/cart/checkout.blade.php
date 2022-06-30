@@ -26,7 +26,7 @@
 							  </div>
 							  <div class="form-group col-lg-6">
 								<label> Country <span class="text-danger">*</span></label>
-								<input type="text" class="form-control" name="c_country" required="" >
+								<input type="text" class="form-control" name="c_country" required=""   >
 							  </div>
 							  <div class="form-group col-lg-6">
 								<label>Shipping Address <span class="text-danger">*</span> </label>
@@ -91,7 +91,7 @@
 							<p style="color: black;">shipping: <span style="float: right; padding-right: 5px;">0.00 {{ $setting->currency }}</span></p>
 
 							@if(Session::has('coupon'))
-							<p style="color: black;"><b> Total: <span style="float: right; padding-right: 5px;"> {{ Session::get('coupon')['after_discount'] }} {{ $setting->currency }} </span></b></p>
+							<p style="color: black;"><b> Total: <span style="float: right; padding-right: 5px;"> {{  Session::get('coupon')['after_discount'] }} {{ $setting->currency }} </span></b></p>
 							@else
 								<p style="color: black;"><b> Total: <span style="float: right; padding-right: 5px;"> {{ Cart::total() }} {{ $setting->currency }} </span></b></p>
 							@endif

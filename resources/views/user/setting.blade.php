@@ -15,7 +15,7 @@
                 <div class="card-body">
                    <h4>Your Default Shipping Credentials.</h4><br>
                    <div>
-                   	  <form action="{{ route('store.website.review') }}" method="post">
+                   	  <form action="{{ route('customer.shipping') }}" method="post">
                    	  	@csrf
                    	    <div class="form-group">
                    	      <label for="exampleInputEmail1">Shipping Name</label>

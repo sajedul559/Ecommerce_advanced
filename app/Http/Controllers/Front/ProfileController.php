@@ -47,5 +47,24 @@ class ProfileController extends Controller
         }
     }
    
+    public function customerShipping(Request $request)
+    {
+
+        $data=array();
+        $data['user_id']=Auth::id();
+        $data['shipping_name']=$request->shipping_name;
+        $data['shipping_phone']=$request->shipping_phone;
+        $data['shipping_address']=$request->shipping_address;
+        $data['shipping_country']=$request->shipping_country;
+        $data['shipping_city']=$request->shipping_city;
+        $data['shipping_zipcode']=$request->shipping_zipcode;
+        $data['shipping_email']=$request->shipping_email;
+
+        
+        DB::table('shippings')->insert($data);
+        $notification=array('message' => 'Shipping setup  success !', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+
+    }
 
 }

@@ -35,6 +35,10 @@ class CouponController extends Controller
      //store coupon 
      public function store(Request $request)
      {
+        $validate = $request->validate([
+            'coupon_amount' => 'required|numeric'
+
+        ]);
           $data=array(
              'coupon_code' =>$request->coupon_code,
              'type' =>$request->type,
