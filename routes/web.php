@@ -101,5 +101,11 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/order/tracking','IndexController@OrderTracking')->name('order.tracking');
     Route::post('/check/order','IndexController@CheckOrder')->name('check.order');
 
+  //__payment gateway
+    Route::post('/success','CheckoutController@success')->name('success');
+    Route::post('/fail','CheckoutController@fail')->name('fail');
+    Route::get('/success',function(){
+        return redirect()->to('/');
+    })->name('cancel');
 
 });
