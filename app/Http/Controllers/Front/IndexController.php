@@ -112,6 +112,28 @@ class IndexController extends Controller
 
     }
 
+     //__order tracking page
+     public function OrderTracking()
+     {
+         return view('frontend.order_tracking');
+     }
+    
+    
+     //__check orer
+     public function CheckOrder(Request $request)
+     {
+         $check=DB::table('orders')->where('order_id',$request->order_id)->first();
+         if ($check) {
+             $order=DB::table('orders')->where('order_id',$request->order_id)->first();
+             $order_details=DB::table('order_details')->where('order_id',$order->id)->get();
+             return view('frontend.order_details',compact('order','order_details'));
+         }else{
+             $notification=array('messege' => 'Invalid OrderID! Try again.', 'alert-type' => 'error');
+             return redirect()->back()->with($notification);
+         }
+     }
+ 
+
  
   
 }

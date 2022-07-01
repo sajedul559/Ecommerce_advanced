@@ -97,4 +97,9 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/show/ticket/{id}','ProfileController@ticketShow')->name('show.ticket');
     Route::post('/reply/ticket','ProfileController@ReplyTicket')->name('reply.ticket'); 
 
+    //order tracking
+    Route::get('/order/tracking','IndexController@OrderTracking')->name('order.tracking');
+    Route::post('/check/order','IndexController@CheckOrder')->name('check.order');
+
+
 });

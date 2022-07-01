@@ -155,6 +155,7 @@ class ProfileController extends Controller
     //__cuistoomer oder details
     public function ViewOrder($id)
     {
+        
         $order=DB::table('orders')->where('id',$id)->first();
         //$order=Order::findorfail($id);
         $order_details=DB::table('order_details')->where('order_id',$id)->get();
