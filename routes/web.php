@@ -72,6 +72,17 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
     Route::get('/childcategory/product/{id}','IndexController@ChildcategoryWiseProduct')->name('childcategorywise.product');
     Route::get('/brandwise/product/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
 
+    //__order 
+	Route::group(['prefix'=>'order'], function(){
+		Route::get('/','OrderController@index')->name('admin.order.index');
+		// Route::post('/store','CampaignController@store')->name('campaign.store');
+		Route::get('/admin/edit/{id}','OrderController@Editorder');
+		Route::post('/update/order/status','OrderController@updateStatus')->name('update.order.status');
+		Route::get('/view/admin/{id}','OrderController@ViewOrder');
+		Route::get('/delete/{id}','OrderController@delete')->name('order.delete');
+		 
+	});
+
      //setting profile
      Route::get('/home/setting','ProfileController@setting')->name('customer.setting'); 
      Route::post('/home/shipping','ProfileController@customerShipping')->name('customer.shipping'); 
@@ -108,4 +119,14 @@ Route::group(['namespace'=>'App\Http\Controllers\Front'],function(){
         return redirect()->to('/');
     })->name('cancel');
 
+      //__campaign__//
+      Route::get('/campain/products/{id}','IndexController@CampaignProduct')->name('frontend.campaign.product');   
+      Route::get('/camapign-product-details/{slug}','IndexController@CampaignProductDetails')->name('campaign.product.details');
+
 });
+
+
+
+//socialite
+Route::get('oauth/{driver}', [App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])->name('social.oauth');
+Route::get('oauth/{driver}/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback'])->name('social.callback');

@@ -29,5 +29,18 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    // 'google' => [
+    //     'client_id'     => env('CLIENT_ID'),
+    //     'client_secret' => env('CLIENT_SECRET'),
+    //     'redirect' => 'localhost/Advanced_ecommerce/oauth/google/callback',
+    //     //'redirect'      => env('APP_URL') . '/oauth/google/callback',
+
+    //  ],
+    'google' => [
+        'client_id' => '330550095455-r3cpiu2dlhl5oaefog8lc73u5h34hb0o.apps.googleusercontent.com',
+        'client_secret' => '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',
+       // 'redirect' => 'http://localhost/Advanced_ecommerce/oauth/google/callback',
+        'redirect' => 'http://127.0.0.1:8000/Advanced_ecommerce/login/google/callback',
+    ],
 
 ];

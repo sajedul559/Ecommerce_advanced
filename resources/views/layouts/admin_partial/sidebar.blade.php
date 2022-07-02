@@ -178,6 +178,30 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+                Orders
+                <i class="fas fa-angle-left right"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('coupon.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pending Orders</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.order.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Orders</p>
+                </a>
+            </li>
+           
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                Ticket
@@ -206,6 +230,26 @@
                 <a href="{{route('pickuppoint.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Pickup Point</p>
+                </a>
+            </li>
+            
+           
+            </ul>
+        </li>
+      
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('report.order.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Order </p>
                 </a>
             </li>
             

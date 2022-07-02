@@ -25,9 +25,9 @@ class IndexController extends Controller
        $home_category=DB::table('categories')->where('home_page',1)->orderBy('category_name','ASC')->get();
 
 
-       // $campaign=DB::table('campaigns')->where('status',1)->orderBy('id','DESC')->first();
+        $campaign=DB::table('campaigns')->where('status',1)->orderBy('id','DESC')->first();
 
-        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal','home_category','review'));
+        return view('frontend.index',compact('category','bannerproduct','featured','popular_product','trendy_product','brand','random_product','todaydeal','home_category','review','campaign'));
     }
 
     
